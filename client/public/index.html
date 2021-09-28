@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>日常代码</title>
+  <link rel="Shortcut Icon" href="./ico/title.ico" type="image/x-icon" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.jpg">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2074071_joj3o7pf17j.css">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <link rel="stylesheet" href="<%= BASE_URL %>editor.md/css/editormd.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/lib/marked.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/lib/prettify.min.js"></script>
+
+  <script src="<%= BASE_URL %>editor.md/lib/raphael.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/lib/underscore.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/lib/sequence-diagram.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/lib/flowchart.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/lib/jquery.flowchart.min.js"></script>
+  <script src="<%= BASE_URL %>editor.md/editormd.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>Kanbanniang/waifu.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-callback="true" data-appid="101953727" data-redirecturi="https://www.hezi.site/home" charset="utf-8"></script>
+
+  <!-- <script src="https://cdn.bootcss.com/vue/2.5.3/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/element-ui/2.4.0/theme-chalk/index.css" rel="external nofollow" >
+    <script src="https://cdn.bootcss.com/element-ui/2.4.0/index.js"></script> -->
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      width: 100%;
+      height: 100%;
+      /* 设置弹性盒模型 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #37474f;
+      opacity: 1;
+      transition: all 0.5s;
+    }
+
+    .container1 .trans {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      /* 设置弹性盒模型 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #37474f;
+    }
+
+    .container1 span {
+      position: absolute;
+      color: #fff;
+      z-index: 1;
+      font-weight: bold;
+    }
+
+    .container1 .trans::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: #37474f;
+      /* 添加边框 */
+      border: 4px solid #3ff9dc;
+      /* 初始化位置 */
+      transform: rotate(45deg);
+      /* 添加动画、动画时间和样式 */
+      animation: rotate1 3s ease-in-out infinite alternate;
+    }
+
+    .container1 .trans::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      /* 添加边框 */
+      border: 4px solid #ffab91;
+      /* 初始化位置 */
+      transform: rotate(-90deg);
+      /* 添加动画、动画时间和样式 */
+      animation: rotate2 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes rotate1 {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(-90deg);
+      }
+
+      50% {
+        transform: rotate(-180deg);
+      }
+
+      75% {
+        transform: rotate(-270deg);
+      }
+
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+
+    @keyframes rotate2 {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(90deg);
+      }
+
+      50% {
+        transform: rotate(180deg);
+      }
+
+      75% {
+        transform: rotate(270deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    li {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <script type="text/javascript" 
+			src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
+            data-callback="true"
+            data-appid="101956584"
+            data-redirecturi="https://www.hezi.site/home"
+            charset="utf-8">
+  </script>  -->
+  <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>Kanbanniang/waifu.css">
+  <div class="waifu" id="waifu">
+    <div class="waifu-tips" style="opacity: 1;"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="waifu-tool">
+      <span class="fui-home"></span>
+      <span class="fui-chat"></span>
+      <span class="fui-eye"></span>
+      <span class="fui-user"></span>
+      <span class="fui-photo"></span>
+      <span class="fui-info-circle"></span>
+      <span class="fui-cross"></span>
+    </div>
+  </div>
+  <script src="<%= BASE_URL %>Kanbanniang/live2d.min.js"></script>
+  <script src="<%= BASE_URL %>Kanbanniang/waifu-tips.js"></script>
+  <script type="text/javascript">initModel()</script>
+  <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>Kanbanniang/flat-ui.min.css" />
+  <script>
+    // if (window.location.href === "http://123.57.136.215/") {
+    if (window.location.href === "http://localhost:8080/") {
+      // if (window.location.href === "https://www.hezi.site/") {
+      document.querySelector('body')
+        .setAttribute(
+          'style',
+          'overflow-y:hidden;'
+        )
+      const a = `<div class="container1"><div class="trans"><span>首次加载时间较长，先冲杯茶吧</span></div></div>`
+      document.write(a);
+      document.onreadystatechange = completeLoading;
+      function completeLoading()
+      {
+        if (document.readyState == "complete") {
+          setTimeout(() =>
+          {
+            let b = document.querySelector('.container1');
+            b.parentNode.removeChild(b);
+          }, 300);
+        }
+      }
+    }
+    // else {
+    //   document.querySelector('body')
+    //     .setAttribute(
+    //       'style',
+    //       'overflow-y:scroll;'
+    //     )
+    // }
+  </script>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <!-- <script type="text/javascript" src="http://connect.qq.com/qc_jssdk.js" data-appid="101956584" data-redirecturi="https://www.hezi.site/home" charset="utf-8"></script> -->
+  <div id="app"></div>
+
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
